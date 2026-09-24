@@ -8,21 +8,25 @@ This project is designed to create a scalable affiliate marketplace where approv
 
 The platform will help visitors discover useful digital products while allowing affiliates to generate traffic and commissions through tracked affiliate links.
 
+The system is designed for future AI-assisted automation, affiliate tracking, analytics, and WarriorPlus API integration.
+
 ## 🎯 Main Goals
 
 - Build an SEO-friendly affiliate marketplace
 - Promote approved WarriorPlus offers
-- Create high-quality product review pages
-- Generate marketing content efficiently
+- Create useful product review pages
 - Organize products by category
+- Manage affiliate links
 - Track affiliate campaigns
-- Build organic Google traffic
-- Support future AI-powered automation
-- Keep the platform fast, mobile-friendly, and scalable
+- Build organic search traffic
+- Support AI-assisted content workflows
+- Keep the website fast and mobile-friendly
+- Build a scalable product management system
+- Prepare the architecture for future API integration
 
 ## 🛒 Product Categories
 
-Planned categories include:
+Planned categories:
 
 - AI Tools
 - Marketing Tools
@@ -52,16 +56,20 @@ Each product can contain:
 - Affiliate URL
 - Tracking/SubID information
 - Product status
+- Publication status
+- Featured status
 
-The main call-to-action will redirect visitors through the affiliate URL to the official vendor/checkout page.
+The primary call-to-action will use the configured affiliate URL to send visitors to the official vendor or checkout page.
+
+Affiliate relationships must be clearly disclosed to visitors.
 
 ## 📄 SEO Product Pages
 
-Each product should have a clean SEO-friendly URL such as:
+Each product should have a clean URL such as:
 
 `/affiliate/product-name`
 
-Each page can include:
+Product pages can include:
 
 - SEO title
 - Meta description
@@ -71,23 +79,30 @@ Each page can include:
 - Benefits
 - Pros and limitations
 - Pricing information
-- Frequently Asked Questions
+- FAQ
 - Relevant internal links
 - Affiliate disclosure
-- Clear call-to-action
+- Clear CTA
+- Breadcrumb navigation
 - Structured data where appropriate
+- Open Graph metadata
+- Social sharing metadata
+
+Product pages should provide useful original information and should not be thin or duplicated pages.
 
 ## 🤖 AI Automation
 
 Future versions will support AI-assisted content generation.
 
-Possible automated fields:
+Possible AI-assisted fields:
 
 - SEO title
 - Meta description
 - Product summary
 - Feature descriptions
-- FAQ generation
+- Benefits
+- Pros and limitations
+- FAQ suggestions
 - Marketing copy
 - Category suggestions
 - Internal linking suggestions
@@ -103,25 +118,35 @@ The system must not generate:
 - Guaranteed income claims
 - Fake scarcity
 - Misleading product claims
+- Unsupported product claims
+
+AI should assist with content creation and optimization, not fabricate facts.
 
 ## 🛠️ Admin Panel
 
-The admin system should allow authorized administrators to:
+Authorized administrators should be able to:
 
 - Add products
 - Edit products
-- Delete/archive products
+- Archive products
+- Delete products
 - Manage categories
 - Add affiliate URLs
 - Add tracking parameters
 - Upload product images
-- Publish/unpublish products
-- Generate SEO content
+- Publish products
+- Unpublish products
+- Generate SEO drafts
+- Edit generated content
 - Manage featured products
+- Manage product status
+- Manage SEO metadata
+
+Administrative functionality must be protected by authentication and authorization.
 
 ## 📊 Analytics
 
-The system should be designed to support:
+The system should support:
 
 - Affiliate clicks
 - Product page views
@@ -129,6 +154,9 @@ The system should be designed to support:
 - Conversion tracking where available
 - Traffic source tracking
 - Product performance
+- Click-through rate
+- Popular products
+- Popular categories
 
 Example tracking:
 
@@ -140,13 +168,25 @@ Example tracking:
 
 `?subid=website`
 
+Tracking must not expose private credentials or sensitive information.
+
 ## 🔌 WarriorPlus API
 
 The architecture should be prepared for future WarriorPlus API integration.
 
-API integration should be added only after the required API credentials and permissions are available.
+API integration should only be implemented after the required API credentials, permissions, and current API requirements are confirmed.
 
-The system should be designed so that API integration can be added without rebuilding the entire application.
+The system should allow API integration to be added without rebuilding the entire application.
+
+Potential future API functionality:
+
+- Product synchronization
+- Offer information synchronization
+- Affiliate data synchronization where permitted
+- Product status updates
+- Automated marketplace updates
+
+API failures must not break the public website.
 
 ## 🔍 Technical SEO
 
@@ -167,6 +207,10 @@ The platform should support:
 - Indexable content
 - 404 handling
 - Redirect management
+- SEO-friendly category pages
+- Noindex controls for low-value or duplicate pages
+
+Only useful, high-quality pages should be intended for search-engine indexing.
 
 ## ⚡ Performance
 
@@ -175,10 +219,13 @@ The website should prioritize:
 - Fast loading
 - Server-side rendering where appropriate
 - Optimized images
-- Minimal JavaScript
+- Minimal unnecessary JavaScript
 - Responsive design
 - Core Web Vitals
 - Mobile usability
+- Efficient database queries
+- Caching where appropriate
+- Proper error handling
 
 ## 🔐 Security
 
@@ -196,14 +243,22 @@ Secrets must be stored in environment variables.
 
 Example:
 
-```env
-WARRIORPLUS_API_KEY=
-DATABASE_URL=
-NEXT_PUBLIC_SITE_URL=Frontend
+`WARRIORPLUS_API_KEY=`
+
+`DATABASE_URL=`
+
+`NEXT_PUBLIC_SITE_URL=`
+
+Never commit real credentials or `.env` files containing secrets to GitHub.
+
+## 🧱 Planned Architecture
+
+```text
+Frontend
    ↓
 Next.js
    ↓
-Product Pages
+SEO Product Pages
    ↓
 Affiliate System
    ↓
@@ -213,17 +268,6 @@ Admin Panel
    ↓
 AI Content Automation
    ↓
-Future WarriorPlus API/
- /affiliate
- /affiliate/ai-tools
- /affiliate/marketing
- /affiliate/youtube
- /affiliate/software
- /affiliate/seo
- /affiliate/product-name
- /categories
- /about
- /contact
- /privacy-policy
- /terms
- /affiliate-disclosure
+Analytics
+   ↓
+Future WarriorPlus API
